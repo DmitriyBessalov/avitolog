@@ -14,6 +14,9 @@ import os, sys
 from avitolog import secrets
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from avitolog.apps import rk
+from avitolog.apps.rk.apps import RkConfig
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 PROJECT_ROOT = os.path.dirname(__file__)
@@ -39,9 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'rk.apps.RkConfig',
     'django.contrib.staticfiles',
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
