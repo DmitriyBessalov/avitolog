@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.timezone import datetime
 from datetime import date
 
 # Create your models here.
@@ -15,7 +14,7 @@ class Ad(models.Model):
     text = models.TextField("Текст", max_length=2000, default="")
     image_1 = models.ImageField("Изображение", upload_to="img/", default="")
     url = models.SlugField(max_length=100)
-    create_date = models.DateTimeField(default=datetime.now, blank=True)
+    create_date = models.DateField("Дата создания", default=date.today)
 
     class Meta:
         verbose_name_plural = 'Объявления'
