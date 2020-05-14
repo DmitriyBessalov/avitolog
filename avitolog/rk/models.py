@@ -17,7 +17,8 @@ class Ad(models.Model):
     create_date = models.DateField("Дата создания", default=date.today)
 
     class Meta:
-        verbose_name_plural = 'Объявления'
+        verbose_name = 'объявление'
+        verbose_name_plural = 'объявления'
 
 class AdIsUpdate(models.Model):
     ad_id = models.ForeignKey(Ad, on_delete=models.CASCADE)

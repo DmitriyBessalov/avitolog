@@ -10,17 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
-import os, sys
-from avitolog import secrets, apps
+import os
+from avitolog import secrets, rk
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-from avitolog.apps import rk
-from avitolog.apps.rk.apps import RkConfig
+from avitolog.rk.apps import RkConfig
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-PROJECT_ROOT = os.path.dirname(__file__)
-sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -43,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rk.apps.RkConfig',
+    'avitolog.rk',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
