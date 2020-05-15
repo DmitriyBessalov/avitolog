@@ -1,0 +1,1 @@
+default_app_config = "avitolog.apps.bid.apps.BidConfig"

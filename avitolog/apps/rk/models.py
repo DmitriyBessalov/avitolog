@@ -6,6 +6,7 @@ class Rk(models.Model):
     name = models.CharField(max_length=100)
 
     class Meta:
+        verbose_name = 'Рекламная компания'
         verbose_name_plural = 'Рекламные компании'
 
 class Ad(models.Model):

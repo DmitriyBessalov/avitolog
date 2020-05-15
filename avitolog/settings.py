@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-from avitolog import secrets, rk
+from avitolog import secrets
+from avitolog.apps import rk
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-from avitolog.rk.apps import RkConfig
+from avitolog.apps.rk.apps import RkConfig
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -39,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'avitolog.rk',
+    'avitolog.apps.rk',
+    'avitolog.apps.bid',
+    'avitolog.apps.sim',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
