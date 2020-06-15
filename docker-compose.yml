@@ -6,6 +6,13 @@ services:
         - "8010:8000"
     volumes:
         - "/home/dmitriy/PycharmProjects/python3.8/avitolog:/home/www"
-
-
+  nginx:
+    image: nginx
+    ports:
+        - 80:80
+        - 443:443
+  postgresql:
+    image: postgresql
+    ports:
+        - 5433:5432
 
