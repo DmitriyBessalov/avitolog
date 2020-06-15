@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-from avitolog import secrets
+
+from dotenv import load_dotenv
+load_dotenv()
+
 from avitolog.apps import rk
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -23,10 +26,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secrets.secretkey
+SECRET_KEY = os.getenv('SECRETKEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (False, True)[os.getenv('DEBUG') == "True"]
 
 ALLOWED_HOSTS = ['*']
 
@@ -82,11 +85,11 @@ WSGI_APPLICATION = 'avitolog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'avitolog',
-        'USER': 'avitolog',
-        'PASSWORD': secrets.db_passwors,
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('POSTGRES_HOST'),
+        'PORT': int(os.getenv('POSTGRES_PORT'))
     }
 }
 
