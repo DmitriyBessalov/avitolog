@@ -3,6 +3,8 @@
 import os
 import sys
 
+import site
+site.addsitedir('./venv/lib/python3.8/site-packages')
 
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'avitolog.settings')

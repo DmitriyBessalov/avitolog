@@ -1,18 +1,28 @@
 version: '3'
 services:
-  web:
-    build: .
+  django:
+    image: ubuntu_python:latest
     ports:
-        - "8010:8000"
+      - 8000:8000
     volumes:
-        - "/home/dmitriy/PycharmProjects/python3.8/avitolog:/home/www"
-  nginx:
-    image: nginx
-    ports:
-        - 80:80
-        - 443:443
+      - "./:/home/www/projects/avitolog"
+    stdin_open: true
+    tty: true
+    entrypoint: /bin/bash
+    env_file:
+      - .env
+    working_dir: /home/www/projects/avitolog
+    command: /home/www/projects/avitolog/start_django_service.sh
+    #restart: always
+    depends_on:
+      - postgresql
   postgresql:
-    image: postgresql
+    image: postgres:12.3
     ports:
-        - 5433:5432
+      - 5432:5432
+    #restart: always
+    env_file:
+      - .env
+    volumes:
+      - "./postgresql/data:/var/lib/postgresql/data"
 
