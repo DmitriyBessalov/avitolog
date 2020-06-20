@@ -6,13 +6,11 @@ services:
       - 5432:5432
     # restart: always
     env_file:
-      - .env
+      - postgres.env
     volumes:
       - "./postgresql/data:/var/lib/postgresql/data"
     stdin_open: true
     tty: true
-    links:
-      - postgresql
   django:
     image: ubuntu_python:latest
     ports:
@@ -23,7 +21,8 @@ services:
     tty: true
     entrypoint: /bin/bash
     env_file:
-      - .env
+      - postgres.env
+      - django.env
     working_dir: /home/www/projects/avitolog
     command: /home/www/projects/avitolog/start_django_service.sh
     #restart: always

@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv('postgres.env')
+load_dotenv('django.env')
 
 from avitolog.apps import rk
 
@@ -32,7 +33,6 @@ SECRET_KEY = os.getenv('SECRETKEY')
 DEBUG = (False, True)[os.getenv('DEBUG') == "True"]
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
