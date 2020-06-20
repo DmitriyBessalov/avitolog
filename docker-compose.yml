@@ -1,5 +1,18 @@
 version: '3'
 services:
+  postgresql:
+    image: postgres:12.3
+    ports:
+      - 5432:5432
+    # restart: always
+    env_file:
+      - .env
+    volumes:
+      - "./postgresql/data:/var/lib/postgresql/data"
+    stdin_open: true
+    tty: true
+    links:
+      - postgresql
   django:
     image: ubuntu_python:latest
     ports:
@@ -16,13 +29,5 @@ services:
     #restart: always
     depends_on:
       - postgresql
-  postgresql:
-    image: postgres:12.3
-    ports:
-      - 5432:5432
-    #restart: always
-    env_file:
-      - .env
-    volumes:
-      - "./postgresql/data:/var/lib/postgresql/data"
-
+    links:
+      - postgresql
